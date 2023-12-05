@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts Link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Guess Number</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .guessNumbers {
+        height: 40%;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 5px;
+        /* border: 2px solid black; */
+        box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.202),
+          -3px -3px 10px rgba(128, 128, 128, 0.202);
+      }
+      .guessNumbers h1 {
+        /* font-size: 50px; */
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(
+          to right,
+          #f32170,
+          #ff6b08,
+          #cf23cf,
+          #eedd44
+        );
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+      }
+      .guessNumbers input {
+        width: 70%;
+        padding: 10px 20px;
+        text-align: center;
+        /* margin: 50px 0px; */
+      }
+      #btn {
+        background: linear-gradient(
+          to right,
+          #f32170,
+          #ff6b08 /* , */ /* #cf23cf,
+          #eedd44 */
+        );
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+      #output {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 40%;
+        height: 15%;
+        box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.202),
+          -3px -3px 10px rgba(128, 128, 128, 0.202);
+        text-align: center;
+      }
+      #output h4 {
+        background: linear-gradient(
+          to right,
+          #f32170,
+          #ff6b08,
+          #cf23cf,
+          #eedd44
+        );
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        font-size: 20px;
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="guessNumbers">
+      <h1>Guess Right Number</h1>
+
+      <!-- <label for="Number">Number </label> -->
+      <input
+        type="number"
+        for="Number"
+        id="Number"
+        placeholder="Enter a Number b/w 1 & 100"
+        required
+      />
+      <button id="btn" onclick="clickenets()">Verify</button>
+    </div>
+    <div id="output">
+      <h4>Output</h4>
+      <p>Here is your output.</p>
+    </div>
+    <script>
+      let computarizedNumber = Math.floor(Math.random() * 101);
+      let i = 1;
+
+      let clickenets = () => {
+        let userNumber = document.getElementById("Number").value;
+        let insidePara = document.querySelector("#output>p");
+
+        if (userNumber > computarizedNumber) {
+          insidePara.innerHTML =
+            "<p>Your number is greater than random number.</p>";
+          console.log(userNumber);
+          i++;
+        } else if (userNumber < computarizedNumber) {
+          insidePara.innerHTML =
+            "<p>Your number is smaller than random number.</p>";
+          console.log(userNumber);
+          i++;
+        } else {
+          insidePara.innerHTML = "<p>Congurdulation! You gessed correct.</p>";
+          console.log(userNumber);
+          let score = 100 - i;
+          alert(
+            `Your total number of chances are: ${i}. So your score is: ${score}`
+          );
+        }
+      };
+    </script>
+  </body>
+</html>
